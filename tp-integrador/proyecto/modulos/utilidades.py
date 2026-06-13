@@ -1,17 +1,19 @@
 from pathlib import Path
 import csv
+
 # Proyecto portable en Windows y Linux
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Rutas
 ARCHIVO_CSV = BASE_DIR / "datos" / "paises_dataset.csv"
+#---------------------------------------------------------
+#-------------FUNCIONES AUXILIARES------------------------
 
-
-def lectura():
+def lectura():     #es utilizada  por todas las funciones practicamente
     """Lee el archivo CSV y devuelve un diccionario."""
-    try:
+    try:                 #intenta tener acceso al archivo con los datos
         with open(ARCHIVO_CSV, "r", encoding="utf-8") as archivo:
-            return list(csv.DictReader(archivo, delimiter=';'))
+            return list(csv.DictReader(archivo, delimiter=';'))   #se utiliza el delimitador ; ya que el csv esta con ese valor
     except FileNotFoundError:
         print(f"Error: No se encontró el archivo '{ARCHIVO_CSV}' en el directorio actual.")
         return []
@@ -31,7 +33,7 @@ def guardar_paises(paises):
 def pedir_entero(mensaje, minimo=0):
     """Verifica que el número ingresado sea válido y persiste hasta que lo sea"""
     while True:
-        try:
+        try:            #solo es para validar los numero ingresados
             numero = int(input(mensaje).strip())
 
             if numero < minimo:
@@ -47,7 +49,7 @@ def pedir_entero(mensaje, minimo=0):
 def pedir_nombre(mensaje, tipo):
     """Verifica el nombre ingresado para que no esté vacío, repetido o sea un número"""
     while True:
-        try:
+        try:                  #valida los nombre de paises ingresados
             nombre = input(mensaje).strip().title()
             if not nombre:
                 raise ValueError(f"El nombre del {tipo} no puede estar vacío.")
@@ -64,8 +66,8 @@ def pedir_nombre(mensaje, tipo):
         except ValueError as e:
             print(f"Error: {e}")
 
-def mostrar_pais(pais):   #funcion auxiliar
-    """Imprime un país en formato legible"""
+def mostrar_pais(pais):   #evita reiterar codigo cada vez que se impreme resultado en pantalla, 
+    """Imprime un país en formato legible"""        #si se quiere cambiar el formato se hace desde aca una sola ves
     print(f"Nombre: {pais['nombre']}, "
           f"Población: {pais['poblacion']}, "
           f"Superficie: {pais['superficie']} km², "
