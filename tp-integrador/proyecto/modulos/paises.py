@@ -5,7 +5,7 @@ from modulos.utilidades import lectura, guardar_paises, pedir_entero, pedir_nomb
 
 def agregar_pais():
     """Agregar un país con todos sus datos obligatorios"""
-    try:
+    try:                                 #es para evaluar los posibles errores de arranque
         pais = pedir_nombre('\nIngrese el nombre del País: ', 'pais')
         poblacion = pedir_entero(f'\nIngrese la población de {pais}: ', 1)
         superficie = pedir_entero(f'\nIngrese la superficie de {pais}: ', 1)
@@ -18,7 +18,7 @@ def agregar_pais():
             'continente': continente
         }
 
-        columnas = ['nombre', 'poblacion', 'superficie', 'continente']
+        columnas = ['nombre', 'poblacion', 'superficie', 'continente']    #utiliza un diccionario
 
         with open(ARCHIVO_CSV, 'a', newline='', encoding='utf-8') as archivo:
             writer = csv.DictWriter(archivo, fieldnames=columnas, delimiter=';')

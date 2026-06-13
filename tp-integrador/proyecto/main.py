@@ -1,14 +1,14 @@
 from modulos.paises import agregar_pais, actualizar_datos, buscar_pais, filtrar_paises, ordenar_paises, mostrar_estadisticas, pedir_entero, lectura, mostrar_pais
 
-GUIONES = '-'*40
+GUIONES = '-'*40     #se utiliza solo a lo fines estéticos
 print(GUIONES)
 print(' '*10+'BIENVENIDOS AL SISTEMA')
 print(' '*12+'DE GESTIÓN DE PAISES')
 
 
-def menu():
+def menu():    
     """Menú persistente con match-case"""
-    while True:
+    while True:    #menu persistente
         print('\n'+GUIONES)
         print(' '*12+'MENU DE OPCIONES')
         print(GUIONES)
@@ -23,7 +23,7 @@ def menu():
 
         opcion = pedir_entero('\nIngrese una de las opciones del menú: ', 1)
 
-        match opcion:
+        match opcion:       #opciones con utilizacion de match case
             case 1:
                 agregar_pais()
             case 2:
@@ -44,5 +44,5 @@ def menu():
 
 
 if __name__ == '__main__':
-    menu()
+    menu()                  #inicia el programa
     
