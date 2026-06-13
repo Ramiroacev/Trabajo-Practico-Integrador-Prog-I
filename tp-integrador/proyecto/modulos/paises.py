@@ -1,7 +1,7 @@
 import csv
 from modulos.utilidades import lectura, guardar_paises, pedir_entero, pedir_nombre, mostrar_pais
-
-
+from modulos.utilidades import ARCHIVO_CSV
+GUIONES = '-'*40
 
 def agregar_pais():
     """Agregar un país con todos sus datos obligatorios"""
@@ -75,6 +75,10 @@ def buscar_pais(): #opcion 3
     ]
 
     if resultados:
+        print(GUIONES)
+        print(' '*5+'PAISES ENCONTRADOS CON')
+        print(' '*5+f'{termino.upper()}')
+        print(GUIONES)
         for p in resultados:
             mostrar_pais(p)
     else:
@@ -92,23 +96,31 @@ def filtrar_paises():   #opcion 4
     print("2: Filtrar por rango de población")
     print("3: Filtrar por rango de superficie")
     opcion = pedir_entero(f"\nElija opción de filtro: ", 1)
+    tipo_filtro = ''
 
     if opcion == 1:
         cont = input("Ingrese continente: ").strip().title()
         filtrados = [p for p in paises if p['continente'] == cont]
+        tipo_filtro = 'CONTINENTE'
     elif opcion == 2:
         min_p = pedir_entero("Ingrese población mínima: ", 0)
         max_p = pedir_entero("Ingrese población máxima: ", min_p)
         filtrados = [p for p in paises if min_p <= int(p['poblacion']) <= max_p]
+        tipo_filtro = 'POBLACIÓN'
     elif opcion == 3:
         min_s = pedir_entero("Ingrese superficie mínima: ", 0)
         max_s = pedir_entero("Ingrese superficie máxima: ", min_s)
         filtrados = [p for p in paises if min_s <= int(p['superficie']) <= max_s]
+        tipo_filtro = 'SUPERFICIE'
     else:
         print("Opción inválida.")
         return
 
     if filtrados:
+        print(GUIONES)
+        print(' '*5+'PAISES FILTRADOS POR:')
+        print(' '*5+f'{tipo_filtro}')
+        print(GUIONES)
         for p in filtrados:
             mostrar_pais(p)
     else:
@@ -127,18 +139,34 @@ def ordenar_paises():   #opcion 5
     print("3: Ordenar por superficie")
     opcion = pedir_entero("Elija opción de ordenamiento: ", 1)
     orden = input("Ascendente (A) o Descendente (D)? ").strip().upper()
-    reverse = True if orden == "D" else False
+    tipo = ''
+    formato = ''
+    reverse = True
+
+    if orden == 'A':
+        reverse = False
+        formato = 'ASCENDENTE'
+    elif orden == 'D':
+        reverse = True
+        formato = 'DESCENDENTE'
 
     if opcion == 1:
         paises.sort(key=lambda p: p['nombre'], reverse=reverse)
+        tipo = 'NOMBRE'
     elif opcion == 2:
         paises.sort(key=lambda p: int(p['poblacion']), reverse=reverse)
+        tipo = 'POBLACIÓN'
     elif opcion == 3:
         paises.sort(key=lambda p: int(p['superficie']), reverse=reverse)
+        tipo = 'SUPERFICIE'
     else:
         print("Opción inválida.")
         return
-
+    
+    print(GUIONES)
+    print(' '*5+'PAISES ORDENDOS POR:')
+    print(' '*5+f'{tipo}, {formato}')
+    print(GUIONES)
     for p in paises:
         mostrar_pais(p) #print(p)
 
@@ -162,6 +190,10 @@ def mostrar_estadisticas():   #opcion 6
     for p in paises:
         cont = p['continente']
         continentes[cont] = continentes.get(cont, 0) + 1
+    
+    print(GUIONES)
+    print(' '*10+'ESTADISTICAS')
+    print(GUIONES)
 
     print(f"País con mayor población: {mayor['nombre']} ({mayor['poblacion']})")
     print(f"País con menor población: {menor['nombre']} ({menor['poblacion']})")
