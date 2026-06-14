@@ -20,15 +20,31 @@ El dataset de análisis se encuentra almacenado dentro de la carpeta `/datos` y 
 
 
 ## Instrucciones de Ejecución
-1-Clonar el repositorio: git clone https://github.com/Ramiroacev/Trabajo-Practico-Integrador-Prog-I.git
-2-Ingresar a la carpeta del proyecto: cd tp-integrador
-3-Ejecutar  python3 proyecto/main.py
+
+1. Clonar el repositorio:
+
+   ```bash
+   git clone https://github.com/Ramiroacev/Trabajo-Practico-Integrador-Prog-I.git
+   ```
+
+2. Ingresar a la carpeta del proyecto:
+
+   ```bash
+   cd Trabajo-Practico-Integrador-Prog-I/tp-integrador
+   ```
+
+3. Ejecutar el programa:
+
+   ```bash
+   python3 proyecto/main.py
+   ```
 
     El mismo generará un Menú interactivo en el cual el usuario podrá generar distintos tipos de
     reportes por pantalla.Ejemplo:
-          Ingrese una de las opciones del menú: 3
+          Ingrese una de las opciones del menú: 3 (Buscar un País por nombre)
           Ingrese el nombre a buscar: Argentina
-
+          
+          Salida:
           Nombre: Argentina, Población: 45376763, Superficie: 2780400 km², Continente: América
 
 ## Requisitos
