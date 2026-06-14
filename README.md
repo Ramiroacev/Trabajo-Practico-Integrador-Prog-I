@@ -41,13 +41,13 @@ El dataset de análisis se encuentra almacenado dentro de la carpeta `/datos` y 
 
     El mismo generará un Menú interactivo en el cual el usuario podrá generar distintos tipos de
     reportes por pantalla.
-        ```Ejemplo:
-          Ingrese una de las opciones del menú: 3 (Buscar un País por nombre)
-          Ingrese el nombre a buscar: Argentina
-
-          Salida:
-          Nombre: Argentina, Población: 45376763, Superficie: 2780400 km², Continente: América
-          ```
+    
+    ```Ejemplo:
+    Ingrese una de las opciones del menú: 3 (Buscar un País por nombre)
+    Ingrese el nombre a buscar: Argentina
+    Salida:
+    Nombre: Argentina, Población: 45376763, Superficie: 2780400 km², Continente: América
+    ```
 
 ## Requisitos
 * ** Python 3
