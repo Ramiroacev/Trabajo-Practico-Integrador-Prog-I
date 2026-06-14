@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+import unicodedata
 
 # Proyecto portable en Windows y Linux
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,7 +11,7 @@ ARCHIVO_CSV = BASE_DIR / "datos" / "paises_dataset.csv"
 #-------------FUNCIONES AUXILIARES------------------------
 
 def lectura():     #es utilizada  por todas las funciones practicamente
-    """Lee el archivo CSV y devuelve un diccionario."""
+    """Lee el archivo CSV y devuelve una lista de diccionarios."""
     try:                 #intenta tener acceso al archivo con los datos
         with open(ARCHIVO_CSV, "r", encoding="utf-8") as archivo:
             return list(csv.DictReader(archivo, delimiter=';'))   #se utiliza el delimitador ; ya que el csv esta con ese valor
@@ -59,9 +60,8 @@ def pedir_nombre(mensaje, tipo):
             if tipo == 'pais':
                 paises = lectura()
                 for pais in paises:
-                    if nombre == pais['nombre']:
+                    if normalizar_texto(nombre) == normalizar_texto(pais['nombre']):
                         raise ValueError(f'El {tipo} ingresado ya se encuentra cargado en la lista')
-
             return nombre
         except ValueError as e:
             print(f"Error: {e}")
@@ -72,3 +72,11 @@ def mostrar_pais(pais):   #evita reiterar codigo cada vez que se impreme resulta
           f"Población: {pais['poblacion']}, "
           f"Superficie: {pais['superficie']} km², "
           f"Continente: {pais['continente']}")
+
+def normalizar_texto(texto):
+    texto = texto.lower()
+
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', texto)
+        if unicodedata.category(c) != 'Mn'
+    )
