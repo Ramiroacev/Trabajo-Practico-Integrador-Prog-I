@@ -13,20 +13,23 @@ El dataset de análisis se encuentra almacenado dentro de la carpeta `/datos` y 
 * **Continente:** (string) Nombre del continente al cual pertenece el país.
 
 ## Estructura del Proyecto
-*- `main.py` → archivo principal con el menú.
-*- `modulos/`
-*  - `paises.py` → funciones de gestión de países.
-*  - `utilidades.py` → funciones auxiliares.
-*- `datos/`
-*  - `paises_dataset.csv` → dataset de países.
+- `main.py` → archivo principal con el menú
+- `modulos/paises.py` → funciones de gestión de países
+- `modulos/utilidades.py` → funciones auxiliares
+- `datos/paises_dataset.csv` → dataset de países
+
 
 ## Instrucciones de Ejecución
-* ** Clonar el repositorio: git clone https://github.com/Ramiroacev/Trabajo-Practico-Integrador-Prog-I.git
-* ** Ingresar a la carpeta del proyecto: cd tp-integrador
-* ** Ejecutar  python3 proyecto/main.py
+1-Clonar el repositorio: git clone https://github.com/Ramiroacev/Trabajo-Practico-Integrador-Prog-I.git
+2-Ingresar a la carpeta del proyecto: cd tp-integrador
+3-Ejecutar  python3 proyecto/main.py
 
     El mismo generará un Menú interactivo en el cual el usuario podrá generar distintos tipos de
-    reportes por pantalla.
+    reportes por pantalla.Ejemplo:
+          Ingrese una de las opciones del menú: 3
+          Ingrese el nombre a buscar: Argentina
+
+          Nombre: Argentina, Población: 45376763, Superficie: 2780400 km², Continente: América
 
 ## Requisitos
 * ** Python 3
